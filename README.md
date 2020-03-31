@@ -4,8 +4,8 @@ traduora-cli
 ![](https://raw.githubusercontent.com/arelstone/traduora-cli/master/docs/_media/image.jpg)
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/traduora-cli.svg)](https://npmjs.org/package/traduora-cli)
-[![Downloads/week](https://img.shields.io/npm/dw/traduora-cli.svg)](https://npmjs.org/package/traduora-cli)
+[![Version](https://img.shields.io/npm/v/traduora-cli.svg)](https://npmjs.org/package/@arelstone/traduora-cli)
+[![Downloads/week](https://img.shields.io/npm/dw/traduora-cli.svg)](https://npmjs.org/package/@arelstone/traduora-cli)
 [![License](https://img.shields.io/npm/l/traduora-cli.svg)](https://github.com//traduora-cli/blob/master/package.json)
 
 -  [Documentation](https://arelstone.github.io/traduora-cli/)
