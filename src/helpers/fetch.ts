@@ -30,7 +30,6 @@ export const get = async (uri: string): Promise<any> => {
         headers: await headersWithToken()
     })
 
-
     const { data } = await response.json()
 
     return data
