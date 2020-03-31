@@ -57,5 +57,5 @@ You can append `> <PATH>` to write to a file
 
 ### Example
 ```bash
-$ traduora export --code=en_GB > ./locale/gb_DB.json
+$ traduora export --code=en_GB > ./locale/en_GB.json
 ```
