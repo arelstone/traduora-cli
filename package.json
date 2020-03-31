@@ -5,6 +5,7 @@
     "bin": {
         "traduora": "./bin/run"
     },
+    "private": false,
     "bugs": "https://github.com/arelstone/traduora-cli/issues",
     "dependencies": {
         "@oclif/command": "^1.5.19",
