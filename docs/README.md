@@ -1,5 +1,7 @@
 # @arelstone/traduora-cli
 
+![](https://github.com/arelstone/traduora-cli/tree/master/docs/_media/image.jpg)
+
 A translation management system is really nice and can be really handle instead of working with .json or .po files. A project I was working on needed such tool and i found [Traduora](https://traduora.com/)
 
 [filename](install.md ':include')

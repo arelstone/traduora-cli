@@ -1,7 +1,7 @@
 traduora-cli
 ============
 
-
+![](https://github.com/arelstone/traduora-cli/tree/master/docs/_media/image.jpg)
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/traduora-cli.svg)](https://npmjs.org/package/traduora-cli)
