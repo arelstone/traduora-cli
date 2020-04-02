@@ -1,6 +1,6 @@
 {
     "name": "@arelstone/traduora-cli",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "author": "Carsten Daurehøj @arelstone",
     "bin": {
         "traduora": "./bin/run"
