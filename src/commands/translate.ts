@@ -3,11 +3,12 @@ import { helpFlag } from '../helpers/flags'
 import { flags } from '@oclif/command'
 import { get, post } from '../helpers/fetch'
 import { Term } from '../types/term.type'
+import { Locale } from '../types/language.type'
 
 export default class Translate extends Command {
     static description = 'Translate a term to a given locale'
 
-    static hidden = true;
+    // static hidden = true;
 
     static flags = {
         help: helpFlag(),
@@ -34,7 +35,12 @@ export default class Translate extends Command {
             flags: { term, code }
         } = this.parse(Translate)
 
-        this.warn('TODO: this does not work')
+        const localeIsAdded = await this.locale(code)
+
+        if (!localeIsAdded) {
+            this.warn(`Language (${code}) is not added to the project`)
+            this.exit(2)
+        }
 
         const result = await post(
             `projects/${(await this.project()).id}/translations/${code}`,
@@ -45,9 +51,12 @@ export default class Translate extends Command {
             'PATCH'
         )
 
-        this.log(result)
+        if (result.code) {
+            return this.log(result)
 
+        }
 
+        this.log(`Term: ${term} is translated to '${result.value}' for locale: ${code}`)
     }
 
     private term = async (input: string): Promise<Term> => {
@@ -62,4 +71,12 @@ export default class Translate extends Command {
         return found;
     }
 
+    private locale = async (code: string) => {
+        const res: Locale[] = await get(`projects/${(await this.project()).id}/translations`)
+
+        const found = res.find(({ locale }) => locale.code === code)
+        return Boolean(found)
+    }
+
 }
+

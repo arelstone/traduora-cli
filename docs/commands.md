@@ -16,21 +16,6 @@ Get stats for your project
 $ traduora stats
 ```
 
-### Response
-```
-Project stats for: PROJECT_NAME
-Progress: 9%
-Translated: 5
-Number of terms: 9
-Number of locales: 6
-
-
-Code  - Progress
-en_GB - 44%
-de_DE - 0%
-sv_SE - 5%
-```
-
 ## Term
 Add a term
 
@@ -46,7 +31,16 @@ Add a locale to your project in ISO format with an _ seperating
 
 ### Example
 ```bash
-$ traduora language:add country_code
+$ traduora language:add CODE
+```
+
+## Translate
+Translate a given term for a given locale
+
+### Example
+```bash
+$ traduora translate VALUE --code=<CODE> --term=<TERM>
+$ traduora translate VALUE -c=<CODE> -t=<TERM>
 ```
 
 
@@ -57,5 +51,6 @@ You can append `> <PATH>` to write to a file
 
 ### Example
 ```bash
-$ traduora export --code=en_GB > ./locale/en_GB.json
+$ traduora export --code=<CODE> > <EXPORT_PATH_TO_FILE_NAME>
+$ traduora export -c=<CODE> > <EXPORT_PATH_TO_FILE_NAME>
 ```
