@@ -5,7 +5,7 @@ import { config, Config } from './helpers/config';
 
 export default abstract class extends Command {
     async project(): Promise<Project> {
-        return await get(`projects/${process.env.TR_PROJECT_ID}`)
+        return await get(`projects/${config().projectId}`)
     }
 
     rc(): Config {
