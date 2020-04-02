@@ -10,28 +10,28 @@
 npm install @arelstone/traduora-cli -save-dev
 ```
 
-### Env variables
-To be able to use this package you should add these variables to your `.env`-file
+#### .traduorarc
+This package needs to know a few things about your traduora project before being able to communicate with your server, for this we'll use an rc file.
 
-If you do not alrady have [dotenv](https://www.npmjs.com/package/dotenv) installed, do it byrunning:
+In the root of your project create a `.traduorarc`-file.
 
-```bash
-npm install dotenv --save
+!> The filenames allowed is: `.traduorarc.js`, `.traduorarc.json` and `.traduorarc`
+
+```js
+{
+    username: '', // Path to the api. Remeber the api/v1 suffix
+    password: '', // The username of who will be authendicated
+    baseUrl: '', // The password
+    projectId: '', // The project is for your traduora project
+}
 ```
 
-#### .env
-```
-TR_BASE_URL=http://localhost:8080/api/v1
-TR_USERNAME=
-TR_PASSWORD=
-TR_PROJECT_ID=
-```
 
 ## Usage
 In your `package.json` add traduora-cli to your scripts section. Because we rely on dotenv you need to 
 ```json
 "scripts": {
-    "traduora": "node -r 'dotenv/config' traduora"
+    "traduora": "traduora"
 }
 ```
 

@@ -1,8 +1,9 @@
 import { flags } from '@oclif/command'
 import Command from '../command'
 import { helpFlag } from '../helpers/flags'
-import { BASE_URL, headersWithToken } from '../helpers/fetch'
+import { headersWithToken } from '../helpers/fetch'
 import fetch from 'node-fetch'
+import { config } from '../helpers/config';
 
 export default class Export extends Command {
     static description = 'Exports all translations based on a locale'
@@ -27,7 +28,7 @@ export default class Export extends Command {
 
     async run() {
         const { flags: { code, format } } = this.parse(Export)
-        const url = `${BASE_URL}/projects/${(await this.project()).id}/exports?locale=${code}&format=${format}`;
+        const url = `${config().baseUrl}/projects/${(await this.project()).id}/exports?locale=${code}&format=${format}`;
 
         const response: any = await fetch(url, {
             headers: await headersWithToken()

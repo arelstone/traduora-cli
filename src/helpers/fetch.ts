@@ -1,16 +1,15 @@
 import fetch from 'node-fetch'
-
-export const BASE_URL = process.env.TR_BASE_URL;
+import { config } from './config'
 
 export const getToken = async () => {
-    const result: any = await fetch(`${BASE_URL}/auth/token`, {
+    const result: any = await fetch(`${config().baseUrl}/auth/token`, {
         method: 'POST',
         headers: {
             'content-type': 'application/json',
         },
         body: JSON.stringify({
-            'username': process.env.TR_USERNAME,
-            'password': process.env.TR_PASSWORD,
+            'username': config().username,
+            'password': config().password,
             'grant_type': 'password'
         }),
     })
@@ -26,7 +25,7 @@ export const headersWithToken = async () => ({
 })
 
 export const get = async (uri: string): Promise<any> => {
-    const response: any = await fetch(`${BASE_URL}/${uri}`, {
+    const response: any = await fetch(`${config().baseUrl}/${uri}`, {
         headers: await headersWithToken()
     })
 
@@ -36,7 +35,7 @@ export const get = async (uri: string): Promise<any> => {
 }
 
 export const post = async (uri: string, body: any, method: 'POST' | 'PATCH' = 'POST'): Promise<any> => {
-    const response: any = await fetch(`${BASE_URL}/${uri}`, {
+    const response: any = await fetch(`${config().baseUrl}/${uri}`, {
         method,
         headers: await headersWithToken(),
         body: JSON.stringify(body),

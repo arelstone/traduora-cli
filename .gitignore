@@ -8,3 +8,7 @@ node_modules
 
 .env
 .env.*
+
+.traduorarc
+.traduorarc.js
+.traduorarc.json
