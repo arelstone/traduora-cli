@@ -17,7 +17,7 @@ export default class Export extends Command {
         format: flags.string({
             char: 'f',
             default: 'jsonflat',
-            options: ['jsonflat'],
+            options: ['jsonflat', 'jsonnested', 'js'],
         }),
     }
 
@@ -28,11 +28,18 @@ export default class Export extends Command {
 
     async run() {
         const { flags: { code, format } } = this.parse(Export)
-        const url = `${config().baseUrl}/projects/${(await this.project()).id}/exports?locale=${code}&format=${format}`;
+
+        const useFormat = format === 'js' ? 'jsonnested' : format;
+
+        const url = `${config().baseUrl}/projects/${(await this.project()).id}/exports?locale=${code}&format=${useFormat}`;
 
         const response: any = await fetch(url, {
             headers: await headersWithToken()
         }).then(r => r.json())
+
+        if (format === 'js') {
+            this.log('module.exports = {' + JSON.stringify(response) + '}')
+        }
 
         this.log(JSON.stringify(response))
     }

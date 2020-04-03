@@ -43,7 +43,15 @@ Export translations into a flat json file.
 
 You can append `> <PATH>` to write to a file
 
+### Formats: 
+Avalible rxport formats is:
+- `js` - Will export an exported.module
+- `jsonflat` - Will export a flat json-file
+- `jsonnested` - Will export a nested json-file
+
 ```bash
 $ traduora export --code=<CODE> > <EXPORT_PATH_TO_FILE_NAME>
+$ traduora export -c=<CODE> --format=<FORMAT> > <EXPORT_PATH_TO_FILE_NAME> 
 $ traduora export -c=<CODE> > <EXPORT_PATH_TO_FILE_NAME>
+$ traduora export -c=<CODE> -f=<FORMAT> > <EXPORT_PATH_TO_FILE_NAME> 
 ```
