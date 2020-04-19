@@ -4,6 +4,7 @@ import { flags } from '@oclif/command'
 import { get, post } from '../helpers/fetch'
 import { Term } from '../types/term.type'
 import { Locale } from '../types/language.type'
+import { config } from '../helpers/config'
 
 export default class Translate extends Command {
     static description = 'Translate a term to a given locale'
@@ -43,7 +44,7 @@ export default class Translate extends Command {
         }
 
         const result = await post(
-            `projects/${(await this.project()).id}/translations/${code}`,
+            `projects/${config('projectId')}/translations/${code}`,
             {
                 termId: (await this.term(term)).id,
                 value,
@@ -60,7 +61,7 @@ export default class Translate extends Command {
     }
 
     private term = async (input: string): Promise<Term> => {
-        const terms = await get(`projects/${(await this.project()).id}/terms`)
+        const terms = await get(`projects/${config('projectId')}/terms`)
         const found = await terms.find((t: Term) => t.value === input)
 
         if (!found) {
@@ -72,7 +73,7 @@ export default class Translate extends Command {
     }
 
     private locale = async (code: string) => {
-        const res: Locale[] = await get(`projects/${(await this.project()).id}/translations`)
+        const res: Locale[] = await get(`projects/${config('projectId')}/translations`)
 
         const found = res.find(({ locale }) => locale.code === code)
         return Boolean(found)

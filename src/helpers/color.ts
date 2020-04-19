@@ -26,3 +26,7 @@ export const textColor = (color: string) => {
 export const labelWithBackground = ({ color, value }: Label) => {
     return chalk.bgHex(color)(chalk.hex(textColor(color))(` ${value} `))
 }
+
+export const randomHexColor = (): string => {
+    return `#${Math.floor(Math.random() * 16777215).toString(16)}`;
+}

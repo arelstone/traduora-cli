@@ -1,8 +1,7 @@
 import { helpFlag } from '../../helpers/flags'
 import Command from '../../command'
-import { post } from '../../helpers/fetch'
 import { flags } from '@oclif/command'
-import { labelWithBackground, isValidHex } from '../../helpers/color'
+import { labelWithBackground, isValidHex, randomHexColor } from '../../helpers/color'
 
 export default class LabelAdd extends Command {
     static description = 'Create a label'
@@ -24,31 +23,28 @@ export default class LabelAdd extends Command {
     async run() {
         const { args: { name }, flags: { color } } = this.parse(LabelAdd)
 
-        if (!isValidHex(this.selectedColor(color))) {
+        const selectedColor = color ? color : randomHexColor()
+
+        if (!isValidHex(selectedColor)) {
             this.warn('Color is not a hex color');
             this.exit();
         }
 
-        const result = await post(`projects/${(await this.project()).id}/labels`, {
+        const result = await this.labelService.add({
             value: name,
-            color: this.selectedColor(color),
+            color: selectedColor,
         });
 
         if (result.code) {
-            this.warn(result.message);
+            this.warn(result.message || '');
             this.exit();
         }
 
         const label = labelWithBackground({
-            color: this.selectedColor(color),
-            value: name,
+            color: result.color,
+            value: result.value,
         })
 
         this.log(`The label ${label} was created`)
-    }
-
-
-    selectedColor = (color = '') => {
-        return color ? color : '#' + (Math.random() * 0xFFFFFF << 0).toString(16)
     }
 }

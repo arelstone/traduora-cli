@@ -3,3 +3,9 @@ export interface Label {
     value: string;
     color: string;
 }
+
+
+export interface AddLabel {
+    value: string;
+    color: string;
+}

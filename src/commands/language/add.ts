@@ -1,7 +1,7 @@
 import Command from '../../command'
 import { helpFlag } from '../../helpers/flags'
-import { get, post } from '../../helpers/fetch'
-import { Language, Locale } from '../../types/language.type'
+import { get } from '../../helpers/fetch'
+import { Language } from '../../types/language.type'
 
 export default class LanguageAdd extends Command {
     static description = 'describe the command here'
@@ -25,8 +25,8 @@ export default class LanguageAdd extends Command {
             this.exit()
         }
 
-        const { locale }: Locale = await post(`projects/${(await this.project()).id}/translations`, { code })
+        const response = await this.languageService.add(code);
 
-        this.log(`The language ${locale.code} was created for ${(await this.project()).name}`)
+        this.log(response);
     }
 }
