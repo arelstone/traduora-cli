@@ -50,7 +50,7 @@ npm run traduora stats
 npm run traduora locale:add en_US
 ```
 
-For more commands see the [commands](/?id=commands)
+For more commands see the [commands](https://arelstone.github.io/traduora-cli/?id=commands)
 
 ## Prerequisites
 - If you are not already using Traduora.  Follow the install steps. [Getting started guide](https://docs.traduora.com/docs/getting-started)
