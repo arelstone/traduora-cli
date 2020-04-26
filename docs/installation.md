@@ -1,16 +1,11 @@
-# Installation
+# Usage & installation
 
-### Prerequisites
-- If you are not already using Traduora.  Follow the install steps. [Getting started guide](https://docs.traduora.com/docs/getting-started)
-
-- dotenv should be installed installed
-
-
+## Installation
 ```bash
 npm install @arelstone/traduora-cli -save-dev
 ```
 
-#### .traduorarc
+## .traduorarc
 This package needs to know a few things about your traduora project before being able to communicate with your server, for this we'll use an rc file.
 
 In the root of your project create a `.traduorarc`-file.
@@ -19,9 +14,9 @@ In the root of your project create a `.traduorarc`-file.
 
 ```js
 {
-    username: '', // Path to the api. Remeber the api/v1 suffix
-    password: '', // The username of who will be authendicated
-    baseUrl: '', // The password
+    baseUrl: '', // Path to the api. Remeber the api/v1 suffix
+    username: '', // The username of who will be authendicated
+    password: '', // The password
     projectId: '', // The project is for your traduora project
 }
 ```
@@ -40,3 +35,8 @@ Now you will be able to use the cli by running
 npm run traduora -- stats
 npm run traduora -- locale:add en_US
 ```
+
+For more commands see the [commands](/?id=commands)
+
+## Prerequisites
+- If you are not already using Traduora.  Follow the install steps. [Getting started guide](https://docs.traduora.com/docs/getting-started)
