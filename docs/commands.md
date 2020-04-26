@@ -43,7 +43,7 @@ Export translations into a flat json file.
 
 You can append `> <PATH>` to write to a file
 
-### Formats: 
+### Formats
 Avalible rxport formats is:
 - `js` - Will export an exported.module
 - `jsonflat` - Will export a flat json-file

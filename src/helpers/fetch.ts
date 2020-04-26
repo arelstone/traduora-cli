@@ -2,14 +2,14 @@ import fetch from 'node-fetch'
 import { config } from './config'
 
 export const getToken = async () => {
-    const result: any = await fetch(`${config().baseUrl}/auth/token`, {
+    const result: any = await fetch(`${config('baseUrl')}/auth/token`, {
         method: 'POST',
         headers: {
             'content-type': 'application/json',
         },
         body: JSON.stringify({
-            'username': config().username,
-            'password': config().password,
+            'username': config('username'),
+            'password': config('password'),
             'grant_type': 'password'
         }),
     })
@@ -25,7 +25,7 @@ export const headersWithToken = async () => ({
 })
 
 export const get = async (uri: string): Promise<any> => {
-    const response: any = await fetch(`${config().baseUrl}/${uri}`, {
+    const response: any = await fetch(`${config('baseUrl')}/${uri}`, {
         headers: await headersWithToken()
     })
 
@@ -35,7 +35,7 @@ export const get = async (uri: string): Promise<any> => {
 }
 
 export const post = async (uri: string, body: any, method: 'POST' | 'PATCH' = 'POST'): Promise<any> => {
-    const response: any = await fetch(`${config().baseUrl}/${uri}`, {
+    const response: any = await fetch(`${config('baseUrl')}/${uri}`, {
         method,
         headers: await headersWithToken(),
         body: JSON.stringify(body),

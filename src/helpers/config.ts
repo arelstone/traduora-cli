@@ -8,7 +8,7 @@ export interface Config {
     projectId: string;
 }
 
-export const config = (): Config => {
+export const config = (key?: keyof Config): Config => {
     const options = {
         path: process.cwd(),
         name: '.traduorarc',
@@ -20,5 +20,7 @@ export const config = (): Config => {
         throw `No .traduorarc file found in ${process.cwd()}`;
     }
 
-    return rc.value
+    return key
+        ? rc.value[key]
+        : rc.value;
 }
