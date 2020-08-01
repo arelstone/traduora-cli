@@ -1,12 +1,13 @@
+![npm](https://shields.cdn.bka.li/npm/dt/@arelstone/traduora-cli?style=for-the-badge)
+![npm (scoped)](https://shields.cdn.bka.li/npm/v/@arelstone/traduora-cli?label=version&style=for-the-badge)
+![GitHub issues](https://shields.cdn.bka.li/github/issues/arelstone/traduora-cli?style=for-the-badge)
+![GitHub pull requests](https://shields.cdn.bka.li/github/issues-pr/arelstone/traduora-cli?style=for-the-badge)
+
+
 traduora-cli
 ============
 
 ![](https://raw.githubusercontent.com/arelstone/traduora-cli/master/docs/_media/image.jpg)
-
-[![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
-[![Version](https://img.shields.io/npm/v/traduora-cli.svg)](https://npmjs.org/package/@arelstone/traduora-cli)
-[![Downloads/week](https://img.shields.io/npm/dw/traduora-cli.svg)](https://npmjs.org/package/@arelstone/traduora-cli)
-[![License](https://img.shields.io/npm/l/traduora-cli.svg)](https://github.com//traduora-cli/blob/master/package.json)
 
 -  [Documentation](https://arelstone.github.io/traduora-cli/)
 - [Issues](https://arelstone.github.io/traduora-cli//issues)
