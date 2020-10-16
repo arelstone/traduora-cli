@@ -1,7 +1,9 @@
 import { flags } from '@oclif/command'
 import Command from '../command'
+import { config } from '../helpers/config'
+import { headersWithToken } from '../helpers/fetch'
 import { helpFlag } from '../helpers/flags'
-import { ExportFormat } from '../services/export.service'
+
 export default class Export extends Command {
     static description = 'Exports all translations based on a locale'
 
@@ -26,7 +28,21 @@ export default class Export extends Command {
     async run() {
         const { flags: { code, format } } = this.parse(Export)
 
-        const response = await this.exportService.get(code, format as ExportFormat);
+        const url = `${config('baseUrl')}/projects/${config('projectId')}/exports?locale=${code}&format=${format}`
+
+        const response: any = await fetch(url, { headers: await headersWithToken() });
+        const json = await response.json();
+        if (response.status !== 200) {
+            this.warn('An error occured');
+            this.log(json);
+
+            return this.exit(0);
+        }
+
+
+        if (format === 'js') {
+            return 'module.exports = {' + JSON.stringify(json) + '}'
+        }
 
         this.log(response);
     }
