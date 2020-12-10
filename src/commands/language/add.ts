@@ -27,6 +27,6 @@ export default class LanguageAdd extends Command {
 
         const response = await this.languageService.add(code);
 
-        this.log(response);
+        this.log(response.id);
     }
 }
